@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEON TODO AGENT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scanline"></div>
+    <main class="app-shell">
+      <header class="hud-header glass">
+        <div>
+          <p class="eyebrow">NEURAL PRODUCTIVITY SUITE</p>
+          <h1>TODO AGENT // NEXUS-9</h1>
+        </div>
+        <div class="status-chip" id="statusChip">SYSTEM ONLINE</div>
+      </header>
+
+      <section class="agent-panel glass">
+        <label for="agentInput">Command the agent</label>
+        <div class="input-row">
+          <input id="agentInput" type="text" placeholder="Try: add Finish prototype tomorrow !high #design" />
+          <button id="addBtn">Deploy Task</button>
+        </div>
+        <p class="hint">Natural commands supported: <code>add</code>, <code>done</code>, <code>clear completed</code>, <code>focus high</code>.</p>
+        <div id="agentResponse" class="agent-response">Awaiting command...</div>
+      </section>
+
+      <section class="dashboard">
+        <article class="stat-card glass">
+          <h2>Queue</h2>
+          <p id="totalCount">0</p>
+        </article>
+        <article class="stat-card glass">
+          <h2>Completed</h2>
+          <p id="doneCount">0</p>
+        </article>
+        <article class="stat-card glass">
+          <h2>High Priority</h2>
+          <p id="highCount">0</p>
+        </article>
+      </section>
+
+      <section class="todo-panel glass">
+        <div class="todo-header">
+          <h2>Mission Tasks</h2>
+          <div class="actions">
+            <button id="clearCompletedBtn" class="ghost">Clear Completed</button>
+            <button id="focusHighBtn" class="ghost">Focus High</button>
+            <button id="showAllBtn" class="ghost active">Show All</button>
+          </div>
+        </div>
+        <ul id="todoList" class="todo-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="todoTemplate">
+      <li class="todo-item">
+        <label class="check-wrap">
+          <input type="checkbox" class="todo-toggle" />
+          <span class="check-mark"></span>
+        </label>
+        <div class="todo-content">
+          <p class="todo-title"></p>
+          <div class="meta-row">
+            <span class="priority"></span>
+            <span class="tag"></span>
+            <span class="due"></span>
+          </div>
+        </div>
+        <button class="delete-btn" aria-label="Delete task">✕</button>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
